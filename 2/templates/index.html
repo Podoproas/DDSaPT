@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+img{
+    max-height:100%;
+    max-width:100%;
+    /*height:auto;*/
+    /*width:auto;*/
+    position:absolute;
+    /*top:-100%; bottom:-100%;*/
+    /*left:-100%; right:-100%;*/
+    cursor: pointer;
+    margin:auto;
+}
+rect {
+            border: solid 2px #0a0909;
+            pointer-events: none;
+            display: none;
+        }
+</style>
+</head>
+<body>
+
+<img id="map" src="{{url_for('static', filename=image)}}" alt="">
+<h1 id="client_id">{{ client_id }}</h1>
+<script type="text/javascript">
+   (function () {
+       var div = document.getElementById('map');
+       div.addEventListener('mousedown', mousedown);
+       div.addEventListener('mouseup', mouseup);
+       div.addEventListener('mousemove', mousemove);
+
+        var grab = false;
+        var rect = {
+            x0: 0,
+            y0: 0,
+            x1: 0,
+            y1: 0
+        };
+
+        function mousedown(e) {
+            grab = true;
+            e.preventDefault();
+            rect.x0 = e.clientX;
+            rect.y0 = e.clientY;
+
+        }
+
+        function mousemove(e) {
+            if (grab) {
+                rect.x1 = e.clientX;
+                rect.y1 = e.clientY;
+                // showRect();
+            }
+        }
+
+       function mouseup(e) {
+           grab = false;
+           sendData({"x0": rect.x0, "x1": rect.x1, "y0": rect.y0, "y1": rect.y1,
+            "client_id": document.getElementById('client_id').textContent,
+            "width": document.getElementById('map').width,
+            "height": document.getElementById('map').height});
+       }
+   })();
+</script>
+<script type="text/javascript">
+   function sendData( data ) {
+     const XHR = new XMLHttpRequest(),
+           FD  = new FormData();
+
+     // Push our data into our FormData object
+     for( name in data ) {
+       FD.append( name, data[ name ] );
+     }
+
+     // Define what happens on successful data submission
+     XHR.addEventListener( 'load', function( event ) {
+       document.getElementById('map').src = XHR.responseText;
+     } );
+
+     // Define what happens in case of error
+     XHR.addEventListener(' error', function( event ) {
+       alert( 'Oops! Something went wrong.' );
+     } );
+
+     // Set up our request
+     XHR.open( 'POST', '/send_cors/' );
+
+     // Send our FormData object; HTTP headers are set automatically
+     XHR.send( FD );
+}
+
+ </script>
