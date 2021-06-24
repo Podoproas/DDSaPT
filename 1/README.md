@@ -1,3 +1,5 @@
+Задание находится в файле trxiod2021_prak1.pdf
+
 Запуск программы:
 * export FLASK_APP=front.py
 * python3 -m flask run --host localhost --port 8179
