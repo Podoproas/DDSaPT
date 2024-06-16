@@ -10,3 +10,7 @@ Launching the program:
 * export FLASK_APP=front.py
 * python -m flask run --host localhost --port 8179
 * python tile_worker.py
+
+Example:
+
+![img.png](resources/img.png)
