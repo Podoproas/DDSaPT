@@ -1,14 +1,14 @@
-Задание находится в файле trxiod2021_prak1.pdf
+The task is in the file trxiod2021_prak1.pdf
 
-Запуск программы:
+Launching the program:
 * export FLASK_APP=front.py
 * python3 -m flask run --host localhost --port 8179
 * python3 HeadWorker.py {num_of_workers}
 
-Теперь WEB интерфейс доступен по адресу <http://localhost:8179/>
+Now the WEB interface is available at <http://localhost:8179/>
 ![img.png](img.png)
 
-В верхнее окно забивается GeoJson, ниже - количество регионов
+GeoJson is entered into the top window, below is the number of regions
 
-При нажатии на "Отправить" - генерируются GeoJson-ы регионов, которые можно скачать кнопкой "Отправить":
+When you click on “Send”, GeoJsons of regions are generated, which can be downloaded with the “Send” button:
 ![img_1.png](img_1.png)

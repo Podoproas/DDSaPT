@@ -1,3 +1,3 @@
-Задание находится в файле trxiod2021_prak2.pdf
+The task is in the file trxiod2021_prak2.pdf
 
-проект с Flask реализующий многопоточную систему отображения geojson с вырезанием кусков, где самой работой занимаются отдельные node-ы (с архитектурой похожей на высоконагруженные сервисы вроде google.maps и yandex.maps) с использованием RabbitMQ
+A project with Flask that implements a multi-threaded geojson display system with cutting out pieces, where the work itself is done by individual nodes (with an architecture similar to high-load services like google.maps and yandex.maps) using RabbitMQ
