@@ -1,5 +1,4 @@
 import io
-import sys
 import lzma
 import pika
 import pickle
@@ -7,10 +6,8 @@ import random
 import string
 import osmnx as ox
 from osmnx import truncate
-import geopandas as gpd
 from os import makedirs
 from os.path import join, exists
-from shapely.geometry import shape
 
 
 class TileWorker:

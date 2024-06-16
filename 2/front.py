@@ -1,14 +1,9 @@
-import os
 import pika
 import pickle
 import random
 import string
-import json as jsn
-from os.path import join
 from flask import request
-from zipfile import ZipFile
-from flask import send_file, send_from_directory
-from flask import Flask, Response, redirect, url_for, flash, render_template
+from flask import Flask, redirect, url_for, flash, render_template
 
 
 upload_template = """
